@@ -7,6 +7,7 @@ import { ReactComponent as IconJava } from './java.svg';
 import { ReactComponent as IconTensorflow } from './tensorflow.svg';
 import { ReactComponent as IconNext } from './nextjs.svg';
 import { ReactComponent as IconDocker } from './docker.svg';
+import { ReactComponent as IconFirebase } from './firebase.svg';
 
 const icons = {
     Golang: IconGolang,
@@ -18,6 +19,7 @@ const icons = {
     Tensorflow: IconTensorflow,
     Next: IconNext,
     Docker: IconDocker,
+    Firebase: IconFirebase
 }
 
 export default icons;

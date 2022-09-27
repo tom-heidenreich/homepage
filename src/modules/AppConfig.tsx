@@ -83,6 +83,10 @@ export const SKillsConfig = {
             "icon": <Icons.Docker />
         },
         {
+            "name": "Firebase",
+            "icon": <Icons.Firebase />
+        },
+        {
             "name": "Tensorflow",
             "icon": <Icons.Tensorflow />
         }

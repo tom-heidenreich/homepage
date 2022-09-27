@@ -4,7 +4,7 @@ import Icons from '../components/icons/Icons';
 export const ProfileConfig = {
     "name": "Tom Heidenreich",
     "avatar": "/images/avatar.png",
-    "short_bio": "I'm a hobby developer, mostly building web apps.\n I'm always learning new things and testing new things.",
+    "short_bio": "I'm a hobby developer, mostly building web apps.\n I'm always learning and trying out new things.",
     "bio": "Hi, I'm Tom, a hobby developer from Germany. I like to build stuff with React, Typescript, or Go. At the moment, I'm really into machine learning. I started programming at 13 years old, and I'm still learning new things (thanks to Fireship). Currently, I'm a student, but I want to work as a developer someday.",
     "project_desc": "You can find my projects on Github. Usually I work on web apps, but I also experiment with other stuff like machine learning.",
     "get_in_touch": "I'm open to small collaborations. \nYou can contact me via "

@@ -1,10 +1,13 @@
 import { IconBrandDiscord, IconBrandGithub } from "@tabler/icons";
+import Icons from '../components/icons/Icons';
 
 export const ProfileConfig = {
     "name": "Tom Heidenreich",
     "avatar": "/images/avatar.png",
-    "short_bio": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. \nIpsam corporis magnam voluptatem molestiae cupiditate",
-    "bio": "",
+    "short_bio": "I'm a hobby developer, mostly building web apps.\n I'm always learning new things and testing new things.",
+    "bio": "Hi, I'm Tom, a hobby developer from Germany. I like to build stuff with React, Typescript, or Go. At the moment, I'm really into machine learning. I started programming at 13 years old, and I'm still learning new things (thanks to Fireship). Currently, I'm a student, but I want to work as a developer someday.",
+    "project_desc": "You can find my projects on Github. Usually I work on web apps, but I also experiment with other stuff like machine learning.",
+    "get_in_touch": "I'm open to small collaborations. \nYou can contact me via "
 }
 
 export const SocialConfig = {
@@ -21,24 +24,67 @@ export const SocialConfig = {
 }
 
 export const ProjectsConfig = {
-    "project-1": {
-        "name": "Project 1",
-        "short_desc": "This is a project",
+    "homepage": {
+        "name": "Homepage",
+        "short_desc": "My personal website",
         "url": ""
     },
-    "project-2": {
-        "name": "Project 2",
-        "short_desc": "This is another project",
+    "schulshop": {
+        "name": "Schulshop",
+        "short_desc": "My school project",
         "url": ""
     },
-    "project-3": {
-        "name": "Project 3",
-        "short_desc": "This is yet another project",
+    "docker-remote-ui": {
+        "name": "Docker Remote UI",
+        "short_desc": "Docker Web UI",
         "url": ""
     }
 }
 
 export const FeaturedProjectsConfig = [
-    ProjectsConfig["project-1"],
-    ProjectsConfig["project-2"],
+    ProjectsConfig.homepage,
+    ProjectsConfig.schulshop,
 ]
+
+export const SKillsConfig = {
+    "languages": [
+        {
+            "name": "Typescript",
+            "icon": <Icons.Typescript />
+        },
+        {
+            "name": "Javascript",
+            "icon": <Icons.Javascript />
+        },
+        {
+            "name": "Python",
+            "icon": <Icons.Python />
+        },
+        {
+            "name": "Go",
+            "icon": <Icons.Golang />
+        },
+        {
+            "name": "Java",
+            "icon": <Icons.Java />
+        }
+    ],
+    "libaries_tools": [
+        {
+            "name": "React",
+            "icon": <Icons.React />
+        },
+        {
+            "name": "Next.js",
+            "icon": <Icons.Next />
+        },
+        {
+            "name": "Docker",
+            "icon": <Icons.Docker />
+        },
+        {
+            "name": "Tensorflow",
+            "icon": <Icons.Tensorflow />
+        }
+    ]
+}

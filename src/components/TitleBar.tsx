@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Group, Title, Text, useMantineTheme, Menu, Burger } from "@mantine/core";
 import { IconSun, IconMoon } from '@tabler/icons'
-import { useThemeSwitch } from "../../modules/useThemeSwitch";
+import { useThemeSwitch } from "../modules/useThemeSwitch";
 
 export default function TitleBar() {
     return (

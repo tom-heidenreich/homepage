@@ -8,7 +8,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { FireTheme } from './theme';
 import { ThemeSwitchProvider } from './modules/useThemeSwitch';
 
-import TitleBar from './components/TitleBar/TitleBar'; 
+import TitleBar from './components/TitleBar'; 
 
 import App from './pages/App/App';
 import About from './pages/About/About';

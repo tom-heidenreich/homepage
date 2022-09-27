@@ -47,7 +47,9 @@ function About() {
                 >
                     {ProfileConfig.name}
                 </Title>
-                <Text>
+                <Text
+                    weight={500}
+                >
                     <MultilineString string={ProfileConfig.short_bio} />
                 </Text>
             </Container>

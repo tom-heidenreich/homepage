@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Group, Title, Text, useMantineTheme, Menu, Burger } from "@mantine/core";
 import { IconSun, IconMoon } from '@tabler/icons'
-import { useThemeSwitch } from "../../modules/useThemeSwitch";
+import { useThemeSwitch } from "../modules/useThemeSwitch";
 
 export default function TitleBar() {
     return (
@@ -11,8 +11,9 @@ export default function TitleBar() {
                 style={{
                     userSelect: 'none',
                 }}
-                m='xs'
-                px='sm'
+                m='xl'
+                mt='md'
+                p='xl'
             >
                 <Name />
                 <Tabs />
@@ -24,6 +25,8 @@ export default function TitleBar() {
 
 function Name() {
 
+    const [hover, setHover] = useState(false);
+
     const navigate = useNavigate();
 
     function handleClick() {
@@ -32,12 +35,15 @@ function Name() {
 
     return (
         <Title
+            variant={hover ? 'gradient' : 'text'}
             style={{
                 fontFamily: 'Reem Kufi Fun, sans-serif',
                 cursor: 'pointer',
             }}
             size='1.5rem'
             onClick={handleClick}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
         >
             tomheidenreich
         </Title>
@@ -88,6 +94,10 @@ function Tab({ text, link }: TabProps) {
 function Settings() {
 
     const [opened, setOpened] = useState(false);
+    const [hover, setHover] = useState(false);
+
+    const theme = useMantineTheme();
+    const primaryColor = theme.colors[theme.primaryColor]
 
     return (
         <Menu
@@ -98,7 +108,13 @@ function Settings() {
             onChange={setOpened}
         >
             <Menu.Target>
-                <Burger opened={opened} size={16} />
+                <Burger
+                    opened={opened}
+                    size={16}
+                    onMouseEnter={() => setHover(true)}
+                    onMouseLeave={() => setHover(false)}
+                    color={hover ? primaryColor[3] : undefined}
+                />
             </Menu.Target>
             <Menu.Dropdown>
                 <Menu.Label>Settings</Menu.Label>

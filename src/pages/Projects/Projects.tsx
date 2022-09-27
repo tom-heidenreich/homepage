@@ -28,7 +28,7 @@ export default function Projects() {
             </Title>
             <Text
                 style={{
-                    maxWidth: '50%',
+                    maxWidth: '30rem',
                 }}
                 weight={500}
                 align={'center'}
@@ -39,7 +39,7 @@ export default function Projects() {
                 mt='xl'
                 spacing='md'
                 style={{
-                    width: '60%',
+                    maxWidth: '32rem',
                 }}
             >
                 {Object.keys(ProjectsConfig).map(project_id => {

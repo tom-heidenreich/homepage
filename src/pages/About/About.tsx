@@ -37,7 +37,7 @@ function AboutMe() {
             <Text
                 weight={500}
                 style={{
-                    maxWidth: '60%',
+                    maxWidth: '30rem',
                 }}
                 align={'center'}
             >
@@ -65,7 +65,7 @@ function Skills() {
             </Title>
             <Container
                 style={{
-                    width: '50%',
+                    width: '30rem',
                 }}
             >
                 <LanguageSkills />
@@ -139,6 +139,7 @@ function SkillWidget({ name, icon }: SkillWidgetProps) {
         <Group
             my='xs'
             style={{
+                maxWidth: '80%',
                 userSelect: 'none',
                 cursor: 'pointer',
                 borderRadius: '1rem',

@@ -17,7 +17,6 @@ export default function TitleBar() {
             >
                 <Name />
                 <Tabs />
-                <Settings />
             </Group>
         </>
     )
@@ -57,6 +56,7 @@ function Tabs() {
         >
             <Tab text='About' link='/about' />
             <Tab text='Projects' link='/projects' />
+            <Settings />
         </Group>
     )
 }

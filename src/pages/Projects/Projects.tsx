@@ -28,7 +28,7 @@ export default function Projects() {
             </Title>
             <Text
                 style={{
-                    width: '50%',
+                    maxWidth: '50%',
                 }}
                 weight={500}
                 align={'center'}

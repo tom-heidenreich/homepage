@@ -6,12 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { FireTheme } from './theme';
+import { ThemeSwitchProvider } from './modules/useThemeSwitch';
 
 import TitleBar from './components/TitleBar/TitleBar'; 
 
 import App from './pages/App/App';
 import About from './pages/About/About';
-import { ThemeSwitchProvider } from './modules/useThemeSwitch';
+import Error404 from './pages/errors/Error404';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -19,6 +20,7 @@ const root = ReactDOM.createRoot(
 root.render(<Index />)
 
 const router = createBrowserRouter([
+    { path: '*', element: <PageWithTitle element={<Error404 />} /> },
     { path: '/', element: <PageWithTitle element={<App />} /> },
     { path: '/about', element: <PageWithTitle element={<About />} /> },
 ])

@@ -27,17 +27,17 @@ export const ProjectsConfig = {
     "homepage": {
         "name": "Homepage",
         "short_desc": "My personal website",
-        "url": ""
+        "url": "https://github.com/tom-heidenreich/homepage"
     },
     "schulshop": {
         "name": "Schulshop",
         "short_desc": "My school project",
-        "url": ""
+        "url": "https://github.com/tom-heidenreich/schulshop"
     },
     "docker-remote-ui": {
         "name": "Docker Remote UI",
         "short_desc": "Docker Web UI",
-        "url": ""
+        "url": "https://github.com/tom-heidenreich/docker-remote-ui"
     }
 }
 

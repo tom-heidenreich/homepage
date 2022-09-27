@@ -13,6 +13,7 @@ import TitleBar from './components/TitleBar/TitleBar';
 import App from './pages/App/App';
 import About from './pages/About/About';
 import Error404 from './pages/errors/Error404';
+import Projects from './pages/Projects/Projects';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
     { path: '*', element: <PageWithTitle element={<Error404 />} /> },
     { path: '/', element: <PageWithTitle element={<App />} /> },
     { path: '/about', element: <PageWithTitle element={<About />} /> },
+    { path: '/projects', element: <PageWithTitle element={<Projects />} /> },
 ])
 
 function PageWithTitle({ element }: { element: JSX.Element }) {

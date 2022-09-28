@@ -1,4 +1,4 @@
-import { Container, Title, Text, useMantineTheme, Group } from "@mantine/core";
+import { Title, Text, useMantineTheme, Group } from "@mantine/core";
 import Project from "../../components/ProjectWidget";
 import { ProfileConfig, ProjectsConfig } from "../../modules/AppConfig";
 import MultilineString from "../../modules/MultilineString";
@@ -9,14 +9,7 @@ export default function Projects() {
     const primaryColor = theme.colors[theme.primaryColor]
 
     return (
-        <Container
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-            }}
-        >
+        <>
             <Title
                 mb='md'
                 color={primaryColor[3]}
@@ -55,6 +48,6 @@ export default function Projects() {
                     )
                 })}
             </Group>
-        </Container>
+        </>
     )
 }

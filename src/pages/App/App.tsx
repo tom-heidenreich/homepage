@@ -6,18 +6,11 @@ import Project from "../../components/ProjectWidget";
 
 export default function App() {
     return (
-        <Container
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-            }}
-        >
+        <>
             <About />
             <Featured />
             <GetInTouch />
-        </Container>
+        </>
     );
 }
 

@@ -29,10 +29,9 @@ const router = createBrowserRouter([
 
 function PageWithTitle({ element }: { element: JSX.Element }) {
     return (
-        <>
-            <TitleBar />
+        <TitleBar>
             {element}
-        </>
+        </TitleBar>
     )
 }
 

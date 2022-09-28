@@ -4,17 +4,10 @@ import { ProfileConfig, SKillsConfig } from "../../modules/AppConfig";
 
 export default function About() {
     return (
-        <Container
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-            }}
-        >
+        <>
             <AboutMe />
             <Skills />
-        </Container>
+        </>
     )
 }
 

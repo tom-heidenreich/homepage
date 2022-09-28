@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ActionIcon, Avatar, Container, Group, Text, Title, useMantineTheme } from "@mantine/core";
+import { ActionIcon, Avatar, Container, Group, Text, Title, Tooltip, useMantineTheme } from "@mantine/core";
 import { FeaturedProjectsConfig, ProfileConfig, SocialConfig } from "../../modules/AppConfig";
 import MultilineString from "../../modules/MultilineString";
 import Project from "../../components/ProjectWidget";
@@ -150,14 +150,18 @@ function Socials() {
             {Object.keys(SocialConfig).map(social => {
                 // @ts-ignore - will never be undefined
                 const social_config = SocialConfig[social];
-                return <SocialIcon icon={social_config.icon} url={social_config.url} />
+                return <SocialIcon
+                    name={social_config.name}
+                    icon={social_config.icon}
+                    url={social_config.url}
+                />
             })}
         </Group>
     )
 }
 
-type SocialIconProps = { icon: JSX.Element, url: string }
-function SocialIcon({ icon, url }: SocialIconProps) {
+type SocialIconProps = { name: string, icon: JSX.Element, url: string }
+function SocialIcon({ name, icon, url }: SocialIconProps) {
 
     const theme = useMantineTheme();
     const primaryColor = theme.colors[theme.primaryColor]
@@ -169,18 +173,25 @@ function SocialIcon({ icon, url }: SocialIconProps) {
     }
 
     return (
-        <ActionIcon
-            onClick={handleClick}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-            style={{
-                color: (hover
-                    ? primaryColor[3]
-                    : undefined
-                )
-            }}
+        <Tooltip 
+            label={name} 
+            withArrow
+            openDelay={500}
+            transition='slide-up'
         >
-            {icon}
-        </ActionIcon>
+            <ActionIcon
+                onClick={handleClick}
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
+                style={{
+                    color: (hover
+                        ? primaryColor[3]
+                        : undefined
+                    )
+                }}
+            >
+                {icon}
+            </ActionIcon>
+        </Tooltip>
     )
 }

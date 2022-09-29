@@ -15,7 +15,7 @@ export default function Project({ name, short_desc, url }: ProjectProps) {
     return (
         <Container
             style={{
-                width: '15rem',
+                width: '17rem',
                 userSelect: 'none',
                 cursor: 'pointer',
                 borderRadius: '1rem',

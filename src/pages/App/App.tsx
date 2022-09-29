@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { ActionIcon, Avatar, Container, Group, Text, Title, Tooltip, useMantineTheme } from "@mantine/core";
+import { ActionIcon, Avatar, Container, Group, Text, Tooltip, useMantineTheme } from "@mantine/core";
 import { FeaturedProjectsConfig, ProfileConfig, SocialConfig } from "../../modules/AppConfig";
 import MultilineString from "../../modules/MultilineString";
 import Project from "../../components/ProjectWidget";
+import PrimaryTitle from "../../components/PrimaryTitle";
 
 export default function App() {
     return (
@@ -31,15 +32,11 @@ function About() {
             <Container
                 m={0}
             >
-                <Title
-                    mb='md'
-                    color={theme.colors.red_salsa[3]}
-                    style={{
-                        userSelect: 'none',
-                    }}
+                <PrimaryTitle
+                    color={theme.colors.red_salsa[4]}
                 >
                     {ProfileConfig.name}
-                </Title>
+                </PrimaryTitle>
                 <Text
                     weight={500}
                 >
@@ -52,10 +49,6 @@ function About() {
 
 type WidgetProps = { children: React.ReactNode, title?: string }
 function Widget({ children, title }: WidgetProps) {
-
-    const theme = useMantineTheme();
-    const primaryColor = theme.colors[theme.primaryColor]
-
     return (
         <Group
             my='2.5rem'
@@ -64,15 +57,9 @@ function Widget({ children, title }: WidgetProps) {
             }}
         >
             {title ? (
-                <Title
-                    size='1.5rem'
-                    color={primaryColor[3]}
-                    style={{
-                        userSelect: 'none',
-                    }}
-                >
+                <PrimaryTitle>
                     {title}
-                </Title>
+                </PrimaryTitle>
             ) : null}
             {children}
         </Group>

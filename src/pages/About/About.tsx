@@ -2,6 +2,7 @@ import { Container, Title, Text, useMantineTheme, Group, Space } from "@mantine/
 import { useState } from "react";
 import PrimaryTitle from "../../components/PrimaryTitle";
 import { ProfileConfig, SKillsConfig } from "../../modules/AppConfig";
+import FormattedText from "../../modules/FormattedText";
 
 export default function About() {
     return (
@@ -25,7 +26,7 @@ function AboutMe() {
                 }}
                 align={'center'}
             >
-                {ProfileConfig.bio}
+                <FormattedText string={ProfileConfig.bio} />
             </Text>
         </>
     )

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ActionIcon, Avatar, Container, Group, Text, Tooltip, useMantineTheme } from "@mantine/core";
 import { FeaturedProjectsConfig, ProfileConfig, SocialConfig } from "../../modules/AppConfig";
-import MultilineString from "../../modules/MultilineString";
+import FormattedText from "../../modules/FormattedText";
 import Project from "../../components/ProjectWidget";
 import PrimaryTitle from "../../components/PrimaryTitle";
 
@@ -40,7 +40,7 @@ function About() {
                 <Text
                     weight={500}
                 >
-                    <MultilineString string={ProfileConfig.short_bio} />
+                    <FormattedText string={ProfileConfig.short_bio} />
                 </Text>
             </Container>
         </Group>
@@ -93,7 +93,7 @@ function GetInTouch() {
                 size='lg'
                 align="center"
             >
-                <MultilineString string={ProfileConfig.get_in_touch} />{' '}
+                <FormattedText string={ProfileConfig.get_in_touch} />{' '}
                 <DiscordLink />.
             </Text>
             <Socials />

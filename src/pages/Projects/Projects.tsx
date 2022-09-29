@@ -2,7 +2,7 @@ import { Text, Group } from "@mantine/core";
 import PrimaryTitle from "../../components/PrimaryTitle";
 import Project from "../../components/ProjectWidget";
 import { ProfileConfig, ProjectsConfig } from "../../modules/AppConfig";
-import MultilineString from "../../modules/MultilineString";
+import FormattedText from "../../modules/FormattedText";
 
 export default function Projects() {
     return (
@@ -17,7 +17,7 @@ export default function Projects() {
                 weight={500}
                 align={'center'}
             >
-                <MultilineString string={ProfileConfig.project_desc} />
+                <FormattedText string={ProfileConfig.project_desc} />
             </Text>
             <Group
                 mt='xl'

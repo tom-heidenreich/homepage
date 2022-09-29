@@ -10,8 +10,8 @@ export default function PrimaryTitle({ children, color }: { children: React.Reac
             mb='md'
             style={{
                 userSelect: 'none',
-                textDecoration: 'underline',
-                textDecorationColor: color || primaryColor,
+                borderBottom: `2px solid ${color || primaryColor}`,
+                borderRadius: '2px'
             }}
         >
             {children}

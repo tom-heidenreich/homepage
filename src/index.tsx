@@ -10,10 +10,13 @@ import { ThemeSwitchProvider } from './modules/useThemeSwitch';
 
 import TitleBar from './components/TitleBar'; 
 
+import Error404 from './pages/errors/Error404';
 import App from './pages/App/App';
 import About from './pages/About/About';
-import Error404 from './pages/errors/Error404';
 import Projects from './pages/Projects/Projects';
+
+import Lab from './pages/Lab/Lab';
+import Bouncer from './pages/Lab/Bouncer/Bouncer';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -25,6 +28,9 @@ const router = createBrowserRouter([
     { path: '/', element: <PageWithTitle element={<App />} /> },
     { path: '/about', element: <PageWithTitle element={<About />} /> },
     { path: '/projects', element: <PageWithTitle element={<Projects />} /> },
+
+    { path: '/lab', element: <PageWithTitle element={<Lab />} /> },
+    { path: '/lab/bouncer', element: <PageWithTitle element={<Bouncer />} /> },
 ])
 
 function PageWithTitle({ element }: { element: JSX.Element }) {

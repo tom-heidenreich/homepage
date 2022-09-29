@@ -1,4 +1,4 @@
-import { Title, Text, useMantineTheme, Group, Space } from "@mantine/core";
+import { Title, Text, useMantineTheme, Group } from "@mantine/core";
 import Project from "../../components/ProjectWidget";
 import { ProfileConfig, ProjectsConfig } from "../../modules/AppConfig";
 import MultilineString from "../../modules/MultilineString";
@@ -48,12 +48,6 @@ export default function Projects() {
                     )
                 })}
             </Group>
-            <Space h={50} />
-            <Project
-                name={'The Lab'}
-                short_desc={'A collection of experiments.'}
-                url={'/lab'}
-            />
         </>
     )
 }

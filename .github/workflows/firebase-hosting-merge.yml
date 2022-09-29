@@ -18,4 +18,3 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_HOMEPAGE_8838C }}'
           channelId: live
           projectId: homepage-8838c
-          REACT_APP_STORAGE_URL_TEMPLATE: 'https://firebasestorage.googleapis.com/v0/b/homepage-8838c.appspot.com/o/lab%2Fbouncer%2Fv1%2F{&NAME}?alt=media'

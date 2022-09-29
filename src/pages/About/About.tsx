@@ -1,39 +1,24 @@
 import { Container, Title, Text, useMantineTheme, Group, Space } from "@mantine/core";
 import { useState } from "react";
+import PrimaryTitle from "../../components/PrimaryTitle";
 import { ProfileConfig, SKillsConfig } from "../../modules/AppConfig";
+import FormattedText from "../../modules/FormattedText";
 
 export default function About() {
     return (
-        <Container
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-            }}
-        >
+        <>
             <AboutMe />
             <Skills />
-        </Container>
+        </>
     )
 }
 
 function AboutMe() {
-
-    const theme = useMantineTheme();
-    const primaryColor = theme.colors[theme.primaryColor]
-
     return (
         <>
-            <Title
-                mb='md'
-                color={primaryColor[3]}
-                style={{
-                    userSelect: 'none',
-                }}
-            >
+            <PrimaryTitle>
                 About me
-            </Title>
+            </PrimaryTitle>
             <Text
                 weight={500}
                 style={{
@@ -41,28 +26,19 @@ function AboutMe() {
                 }}
                 align={'center'}
             >
-                {ProfileConfig.bio}
+                <FormattedText string={ProfileConfig.bio} />
             </Text>
         </>
     )
 }
 
 function Skills() {
-
-    const theme = useMantineTheme();
-    const primaryColor = theme.colors[theme.primaryColor]
-
     return (
         <>
-            <Title
-                mt='xl'
-                color={primaryColor[3]}
-                style={{
-                    userSelect: 'none',
-                }}
-            >
+            <Space h='xl' />
+            <PrimaryTitle>
                 Skills
-            </Title>
+            </PrimaryTitle>
             <Container
                 style={{
                     width: '30rem',

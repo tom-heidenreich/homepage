@@ -1,31 +1,15 @@
-import { Container, Title, Text, useMantineTheme, Group } from "@mantine/core";
+import { Text, Group } from "@mantine/core";
+import PrimaryTitle from "../../components/PrimaryTitle";
 import Project from "../../components/ProjectWidget";
 import { ProfileConfig, ProjectsConfig } from "../../modules/AppConfig";
-import MultilineString from "../../modules/MultilineString";
+import FormattedText from "../../modules/FormattedText";
 
 export default function Projects() {
-
-    const theme = useMantineTheme();
-    const primaryColor = theme.colors[theme.primaryColor]
-
     return (
-        <Container
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-            }}
-        >
-            <Title
-                mb='md'
-                color={primaryColor[3]}
-                style={{
-                    userSelect: 'none',
-                }}
-            >
+        <>
+            <PrimaryTitle>
                 My Projects
-            </Title>
+            </PrimaryTitle>
             <Text
                 style={{
                     maxWidth: '30rem',
@@ -33,7 +17,7 @@ export default function Projects() {
                 weight={500}
                 align={'center'}
             >
-                <MultilineString string={ProfileConfig.project_desc} />
+                <FormattedText string={ProfileConfig.project_desc} />
             </Text>
             <Group
                 mt='xl'
@@ -55,6 +39,6 @@ export default function Projects() {
                     )
                 })}
             </Group>
-        </Container>
+        </>
     )
 }

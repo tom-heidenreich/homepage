@@ -1,17 +1,8 @@
-import { Container, Title, Text } from "@mantine/core";
+import { Title, Text } from "@mantine/core";
 
 export default function Error404() {
     return (
-        <Container
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                userSelect: 'none',
-            }}
-            mt='xl'
-        >
+        <>
             <Title
                 size='7rem'
                 variant="gradient"
@@ -24,6 +15,6 @@ export default function Error404() {
             >
                 Not Found
             </Text>
-        </Container>
+        </>
     )
 }

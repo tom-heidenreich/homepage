@@ -1,23 +1,17 @@
 import { useState } from "react";
-import { ActionIcon, Avatar, Container, Group, Text, Title, Tooltip, useMantineTheme } from "@mantine/core";
+import { ActionIcon, Avatar, Container, Group, Text, Tooltip, useMantineTheme } from "@mantine/core";
 import { FeaturedProjectsConfig, ProfileConfig, SocialConfig } from "../../modules/AppConfig";
-import MultilineString from "../../modules/MultilineString";
+import FormattedText from "../../modules/FormattedText";
 import Project from "../../components/ProjectWidget";
+import PrimaryTitle from "../../components/PrimaryTitle";
 
 export default function App() {
     return (
-        <Container
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-            }}
-        >
+        <>
             <About />
             <Featured />
             <GetInTouch />
-        </Container>
+        </>
     );
 }
 
@@ -38,19 +32,15 @@ function About() {
             <Container
                 m={0}
             >
-                <Title
-                    mb='md'
-                    color={theme.colors.red_salsa[3]}
-                    style={{
-                        userSelect: 'none',
-                    }}
+                <PrimaryTitle
+                    color={theme.colors.red_salsa[4]}
                 >
                     {ProfileConfig.name}
-                </Title>
+                </PrimaryTitle>
                 <Text
                     weight={500}
                 >
-                    <MultilineString string={ProfileConfig.short_bio} />
+                    <FormattedText string={ProfileConfig.short_bio} />
                 </Text>
             </Container>
         </Group>
@@ -59,10 +49,6 @@ function About() {
 
 type WidgetProps = { children: React.ReactNode, title?: string }
 function Widget({ children, title }: WidgetProps) {
-
-    const theme = useMantineTheme();
-    const primaryColor = theme.colors[theme.primaryColor]
-
     return (
         <Group
             my='2.5rem'
@@ -71,15 +57,9 @@ function Widget({ children, title }: WidgetProps) {
             }}
         >
             {title ? (
-                <Title
-                    size='1.5rem'
-                    color={primaryColor[3]}
-                    style={{
-                        userSelect: 'none',
-                    }}
-                >
+                <PrimaryTitle>
                     {title}
-                </Title>
+                </PrimaryTitle>
             ) : null}
             {children}
         </Group>
@@ -113,7 +93,7 @@ function GetInTouch() {
                 size='lg'
                 align="center"
             >
-                <MultilineString string={ProfileConfig.get_in_touch} />{' '}
+                <FormattedText string={ProfileConfig.get_in_touch} />{' '}
                 <DiscordLink />.
             </Text>
             <Socials />

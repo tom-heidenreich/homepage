@@ -10,9 +10,9 @@ import { ThemeSwitchProvider } from './modules/useThemeSwitch';
 
 import TitleBar from './components/TitleBar'; 
 
+import Error404 from './pages/errors/Error404';
 import App from './pages/App/App';
 import About from './pages/About/About';
-import Error404 from './pages/errors/Error404';
 import Projects from './pages/Projects/Projects';
 
 const root = ReactDOM.createRoot(
@@ -29,10 +29,9 @@ const router = createBrowserRouter([
 
 function PageWithTitle({ element }: { element: JSX.Element }) {
     return (
-        <>
-            <TitleBar />
+        <TitleBar>
             {element}
-        </>
+        </TitleBar>
     )
 }
 

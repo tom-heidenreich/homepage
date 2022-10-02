@@ -74,6 +74,7 @@ function Featured() {
             <Group>
                 {FeaturedProjectsConfig.map(project => (
                     <Project
+                        key={project.name}
                         name={project.name}
                         short_desc={project.short_desc}
                         url={project.url}
@@ -131,6 +132,7 @@ function Socials() {
                 // @ts-ignore - will never be undefined
                 const social_config = SocialConfig[social];
                 return <SocialIcon
+                    key={social_config.name}
                     name={social_config.name}
                     icon={social_config.icon}
                     url={social_config.url}

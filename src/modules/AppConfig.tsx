@@ -1,6 +1,3 @@
-import { IconBrandDiscord, IconBrandGithub } from "@tabler/icons";
-import Icons from '../components/icons/Icons';
-
 export const ProfileConfig = {
     "name": "Tom Heidenreich",
     "avatar": "/images/avatar.png",
@@ -14,12 +11,12 @@ export const SocialConfig = {
     "github": {
         "name": "Github",
         "url": "https://github.com/tom-heidenreich",
-        "icon": <IconBrandGithub />
+        "icon": "brand_github"
     },
     "discord": {
         "name": "Discord",
         "url": "https://discord.com/users/411165035184914432",
-        "icon": <IconBrandDiscord />
+        "icon": "brand_discord"
     }
 }
 
@@ -46,49 +43,49 @@ export const FeaturedProjectsConfig = [
     ProjectsConfig.schulshop,
 ]
 
-export const SKillsConfig = {
+export const SkillsConfig = {
     "languages": [
         {
             "name": "Typescript",
-            "icon": <Icons.Typescript />
+            "icon": "lang_typescript"
         },
         {
             "name": "Javascript",
-            "icon": <Icons.Javascript />
+            "icon": "lang_javascript"
         },
         {
             "name": "Python",
-            "icon": <Icons.Python />
+            "icon": "lang_python"
         },
         {
             "name": "Go",
-            "icon": <Icons.Golang />
+            "icon": "lang_go"
         },
         {
             "name": "Java",
-            "icon": <Icons.Java />
+            "icon": "lang_java"
         }
     ],
     "libaries_tools": [
         {
             "name": "React",
-            "icon": <Icons.React />
+            "icon": "lib_react"
         },
         {
             "name": "Next.js",
-            "icon": <Icons.Next />
+            "icon": "lib_next"
         },
         {
             "name": "Docker",
-            "icon": <Icons.Docker />
+            "icon": "lib_docker"
         },
         {
             "name": "Firebase",
-            "icon": <Icons.Firebase />
+            "icon": "lib_firebase"
         },
         {
             "name": "Tensorflow",
-            "icon": <Icons.Tensorflow />
+            "icon": "lib_tensorflow"
         }
     ]
 }

@@ -1,8 +1,9 @@
 import { Container, Title, Text, useMantineTheme, Group, Space } from "@mantine/core";
 import { useState } from "react";
 import PrimaryTitle from "../../components/PrimaryTitle";
-import { ProfileConfig, SKillsConfig } from "../../modules/AppConfig";
+import { ProfileConfig, SkillsConfig } from "../../modules/AppConfig";
 import FormattedText from "../../modules/FormattedText";
+import IconProvider from "../../modules/IconProvider";
 
 export default function About() {
     return (
@@ -66,7 +67,7 @@ function LanguageSkills() {
                 Languages
             </Title>
             {
-                SKillsConfig.languages.map((skill, index) => {
+                SkillsConfig.languages.map((skill, index) => {
                     return <SkillWidget
                         name={skill.name}
                         icon={skill.icon}
@@ -92,7 +93,7 @@ function LibariesSkills() {
                 Libaries and Tools
             </Title>
             {
-                SKillsConfig.libaries_tools.map((skill, index) => {
+                SkillsConfig.libaries_tools.map((skill, index) => {
                     return <SkillWidget
                         name={skill.name}
                         icon={skill.icon}
@@ -104,7 +105,7 @@ function LibariesSkills() {
     )
 }
 
-type SkillWidgetProps = { name: string, icon: JSX.Element }
+type SkillWidgetProps = { name: string, icon: string }
 function SkillWidget({ name, icon }: SkillWidgetProps) {
 
     const [hover, setHover] = useState(false);

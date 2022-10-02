@@ -13,17 +13,16 @@ export default function FormattedText({ string }: { string: string }) {
         let inHighlight = false;
         // iterate over string
         for(const c of string) {
-            console.log(c);
             // add <br/> if char is newline
             if(c === '\n') {
                 buffer.push(stringBuffer.join(''));
-                buffer.push(<br />);
+                buffer.push(<br key={Math.random()} />);
                 stringBuffer.length = 0;
             }
             // highlight text between * and *
             else if(c === '*') {
                 if(inHighlight) {
-                    buffer.push(<Text component='span' color={theme.primaryColor}>{stringBuffer.join('')}</Text>);
+                    buffer.push(<Text key={Math.random()} component='span' color={theme.primaryColor}>{stringBuffer.join('')}</Text>);
                     stringBuffer.length = 0;
                 }else {
                     buffer.push(stringBuffer.join(''));

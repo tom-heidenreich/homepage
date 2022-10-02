@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { ActionIcon, Avatar, Container, Group, Text, Tooltip, useMantineTheme } from "@mantine/core";
+import { Avatar, Container, Group, Text, useMantineTheme } from "@mantine/core";
 import { FeaturedProjectsConfig, ProfileConfig, SocialConfig } from "../../modules/AppConfig";
 import FormattedText from "../../modules/FormattedText";
 import Project from "../../components/ProjectWidget";
 import PrimaryTitle from "../../components/PrimaryTitle";
+import SocialIcon from "../../components/SocialIcon";
 
 export default function App() {
     return (
@@ -51,7 +51,7 @@ type WidgetProps = { children: React.ReactNode, title?: string }
 function Widget({ children, title }: WidgetProps) {
     return (
         <Group
-            my='2.5rem'
+            my='4.5rem'
             style={{
                 flexDirection: 'column',
             }}
@@ -74,6 +74,7 @@ function Featured() {
             <Group>
                 {FeaturedProjectsConfig.map(project => (
                     <Project
+                        key={project.name}
                         name={project.name}
                         short_desc={project.short_desc}
                         url={project.url}
@@ -131,47 +132,12 @@ function Socials() {
                 // @ts-ignore - will never be undefined
                 const social_config = SocialConfig[social];
                 return <SocialIcon
+                    key={social_config.name}
                     name={social_config.name}
                     icon={social_config.icon}
                     url={social_config.url}
                 />
             })}
         </Group>
-    )
-}
-
-type SocialIconProps = { name: string, icon: JSX.Element, url: string }
-function SocialIcon({ name, icon, url }: SocialIconProps) {
-
-    const theme = useMantineTheme();
-    const primaryColor = theme.colors[theme.primaryColor]
-
-    const [hover, setHover] = useState(false);
-
-    function handleClick() {
-        window.location.href = url;
-    }
-
-    return (
-        <Tooltip 
-            label={name} 
-            withArrow
-            openDelay={500}
-            transition='slide-up'
-        >
-            <ActionIcon
-                onClick={handleClick}
-                onMouseEnter={() => setHover(true)}
-                onMouseLeave={() => setHover(false)}
-                style={{
-                    color: (hover
-                        ? primaryColor[3]
-                        : undefined
-                    )
-                }}
-            >
-                {icon}
-            </ActionIcon>
-        </Tooltip>
     )
 }

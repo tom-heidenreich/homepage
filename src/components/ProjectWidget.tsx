@@ -1,16 +1,31 @@
 import { Container, Title, Text, useMantineTheme } from "@mantine/core";
-import { useState } from "react";
+import { Analytics, getAnalytics, logEvent } from "firebase/analytics";
+import { useEffect, useState } from "react";
 
 type ProjectProps = { name: string, short_desc: string, url: string }
 export default function Project({ name, short_desc, url }: ProjectProps) {
 
     const theme = useMantineTheme();
 
+    const [analytics, setAnalytics] = useState<Analytics | undefined>(undefined);
     const [hover, setHover] = useState(false);
 
+    useEffect(() => {
+        const analytics = getAnalytics()
+        setAnalytics(analytics)
+    }, [analytics]);
+
     function handleClick() {
-        window.location.href = url;
+        // report to analytics
+        if(analytics) {
+            logEvent(analytics, 'post_impression', {
+                name: name,
+            })
+        }else console.warn('Analytics not initialized')
+        window.location.href = url
     }
+
+    if(!analytics) return null
 
     return (
         <Container

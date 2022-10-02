@@ -139,7 +139,7 @@ function SkillWidget({ name, icon }: SkillWidgetProps) {
                     height: '2rem',
                 }}
             >
-                {icon}
+                <IconProvider icon={icon} />
             </div>
             <Text>
                 {name}

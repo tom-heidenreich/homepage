@@ -51,7 +51,7 @@ type WidgetProps = { children: React.ReactNode, title?: string }
 function Widget({ children, title }: WidgetProps) {
     return (
         <Group
-            my='2.5rem'
+            my='4.5rem'
             style={{
                 flexDirection: 'column',
             }}

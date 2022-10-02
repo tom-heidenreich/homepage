@@ -15,6 +15,23 @@ import App from './pages/App/App';
 import About from './pages/About/About';
 import Projects from './pages/Projects/Projects';
 
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAC46yYqr87EpxKHK2qqSFWiE3yZAsHEEo",
+  authDomain: "homepage-8838c.firebaseapp.com",
+  projectId: "homepage-8838c",
+  storageBucket: "homepage-8838c.appspot.com",
+  messagingSenderId: "99461164692",
+  appId: "1:99461164692:web:f1971105ff3f8558d70e81",
+  measurementId: "G-2PQ8WB7741"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+getAnalytics(app);
+
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );

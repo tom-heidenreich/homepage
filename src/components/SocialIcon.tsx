@@ -1,8 +1,9 @@
 import { ActionIcon, Tooltip, useMantineTheme } from "@mantine/core";
 import { Analytics, getAnalytics, logEvent } from "firebase/analytics";
 import { useEffect, useState } from "react";
+import IconProvider from "../modules/IconProvider";
 
-type SocialIconProps = { name: string, icon: JSX.Element, url: string }
+type SocialIconProps = { name: string, icon: string, url: string }
 export default function SocialIcon({ name, icon, url }: SocialIconProps) {
 
     const theme = useMantineTheme();
@@ -46,7 +47,7 @@ export default function SocialIcon({ name, icon, url }: SocialIconProps) {
                     )
                 }}
             >
-                {icon}
+                <IconProvider icon={icon} />
             </ActionIcon>
         </Tooltip>
     )

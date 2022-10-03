@@ -9,10 +9,50 @@ export default function FormattedText({ string }: { string: string }) {
 
     useEffect(() => {
         const buffer: (string | JSX.Element)[] = []
+
         const stringBuffer: string[] = []
-        let inHighlight = false;
+        const optionsBuffer: string[] = []
+
+        let ignoreNext = false
+
+        let inOptions = 0
+        let inHighlight = false
+        let inLink = false
+
+        let options: any = {} 
+
         // iterate over string
         for(const c of string) {
+
+            if(c === '\\' && !ignoreNext) {
+                ignoreNext = true
+                continue
+            } else if(ignoreNext) {
+                stringBuffer.push(c)
+                ignoreNext = false
+                continue
+            }
+
+            // add options between ?{}
+            if(c === '?') {
+                inOptions = 1
+                continue
+            }
+            else if(c === '{' && inOptions === 1) {
+                inOptions = 2
+                continue
+            }
+            else if(inOptions === 2) {
+                if(c === '}') {
+                    options = JSON.parse(`{${optionsBuffer.join('')}}`)
+                    optionsBuffer.length = 0
+                    inOptions = 0
+                }else {
+                    optionsBuffer.push(c)
+                }
+                continue
+            }
+
             // add <br/> if char is newline
             if(c === '\n') {
                 buffer.push(stringBuffer.join(''));
@@ -22,13 +62,33 @@ export default function FormattedText({ string }: { string: string }) {
             // highlight text between * and *
             else if(c === '*') {
                 if(inHighlight) {
-                    buffer.push(<Text key={Math.random()} component='span' color={theme.primaryColor}>{stringBuffer.join('')}</Text>);
+                    buffer.push(<Text
+                        key={Math.random()}
+                        component='span'
+                        color={theme.primaryColor}
+                        {...options}
+                    >{stringBuffer.join('')}</Text>);
                     stringBuffer.length = 0;
                 }else {
                     buffer.push(stringBuffer.join(''));
                     stringBuffer.length = 0;
                 }
                 inHighlight = !inHighlight;
+            }
+            // add link between []
+            else if(c === '[' && !inLink) {
+                inLink = true
+                buffer.push(stringBuffer.join(''));
+                stringBuffer.length = 0;
+            }
+            else if(c === ']' && inLink) {
+                inLink = false
+                buffer.push(<Text
+                    key={Math.random()}
+                    component='a'
+                    {...options}
+                >{stringBuffer.join('')}</Text>);
+                stringBuffer.length = 0;
             }
             else {
                 stringBuffer.push(c);

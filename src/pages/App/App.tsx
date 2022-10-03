@@ -1,21 +1,46 @@
 import { Avatar, Container, Group, Text, useMantineTheme } from "@mantine/core";
-import { FeaturedProjectsConfig, ProfileConfig, SocialConfig } from "../../modules/AppConfig";
 import FormattedText from "../../modules/FormattedText";
 import Project from "../../components/ProjectWidget";
 import PrimaryTitle from "../../components/PrimaryTitle";
 import SocialIcon from "../../components/SocialIcon";
+import { useEffect, useState } from "react";
+import { getRemoteConfig, getValue } from "firebase/remote-config";
+import { FeaturedProjectsConfig, ProfileConfig, SocialsConfig } from "../../modules/AppConfig";
 
 export default function App() {
+
+    const [profileConfig, setProfileConfig] = useState<ProfileConfig | undefined>()
+    const [featuredProjectsConfig, setFeaturedProjectsConfig] = useState<FeaturedProjectsConfig | undefined>()
+    const [socialsConfig, setSocialsConfig] = useState<SocialsConfig | undefined>()
+
+    useEffect(() => {
+        const remoteConfig = getRemoteConfig()
+
+        const rawProfile = getValue(remoteConfig, 'profile')
+        if(!rawProfile.asString()) console.error(`Could not get value of 'profile'. Source: '${rawProfile.getSource()}'`) 
+        else setProfileConfig(JSON.parse(rawProfile.asString()) as ProfileConfig)
+
+        const rawFeaturedProjects = getValue(remoteConfig, 'featured_projects')
+        if(!rawFeaturedProjects.asString()) console.error(`Could not get value of 'featured_projects'. Source: '${rawFeaturedProjects.getSource()}'`)
+        else setFeaturedProjectsConfig(JSON.parse(rawFeaturedProjects.asString()) as FeaturedProjectsConfig)
+
+        const rawSocials = getValue(remoteConfig, 'social')
+        if(!rawSocials.asString()) console.error(`Could not get value of 'social'. Source: '${rawSocials.getSource()}'`)
+        else setSocialsConfig(JSON.parse(rawSocials.asString()) as SocialsConfig)
+    }, [])
+
+    if(!profileConfig || !featuredProjectsConfig || !socialsConfig) return null
+
     return (
         <>
-            <About />
-            <Featured />
-            <GetInTouch />
+            <About profile={profileConfig} />
+            <Featured featured_projects={featuredProjectsConfig} />
+            <GetInTouch profile={profileConfig} socials={socialsConfig} />
         </>
     );
 }
 
-function About() {
+function About({ profile }: { profile: ProfileConfig }) {
 
     const theme = useMantineTheme();
 
@@ -25,7 +50,7 @@ function About() {
             align={'center'}
         >
             <Avatar
-                src={ProfileConfig.avatar}
+                src={profile.avatar}
                 radius={100}
                 size={150}
             />
@@ -35,12 +60,12 @@ function About() {
                 <PrimaryTitle
                     color={theme.colors.red_salsa[4]}
                 >
-                    {ProfileConfig.name}
+                    {profile.name}
                 </PrimaryTitle>
                 <Text
                     weight={500}
                 >
-                    <FormattedText string={ProfileConfig.short_bio} />
+                    <FormattedText string={profile.short_bio} />
                 </Text>
             </Container>
         </Group>
@@ -66,13 +91,13 @@ function Widget({ children, title }: WidgetProps) {
     )
 }
 
-function Featured() {
+function Featured({ featured_projects }: { featured_projects: FeaturedProjectsConfig }) {
     return (
         <Widget
             title='Featured Projects'
         >
             <Group>
-                {FeaturedProjectsConfig.map(project => (
+                {featured_projects.map(project => (
                     <Project
                         key={project.name}
                         name={project.name}
@@ -85,7 +110,7 @@ function Featured() {
     )
 }
 
-function GetInTouch() {
+function GetInTouch({ profile, socials }: { profile: ProfileConfig, socials: SocialsConfig }) {
     return (
         <Widget
             title='Get In Touch'
@@ -94,48 +119,22 @@ function GetInTouch() {
                 size='lg'
                 align="center"
             >
-                <FormattedText string={ProfileConfig.get_in_touch} />{' '}
-                <DiscordLink />.
+                <FormattedText string={profile.get_in_touch} />
             </Text>
-            <Socials />
+            <Socials socials={socials} />
         </Widget>
     )
 }
 
-function DiscordLink() {
-
-    const social_discord = SocialConfig.discord;
-
-    function handleClick() {
-        window.location.href = social_discord.url;
-    }
-
-    return (
-        <Text
-            component="span"
-            color={'#5865F2'}
-            onClick={handleClick}
-            weight={700}
-            style={{
-                cursor: 'pointer',
-            }}
-        >
-            {social_discord.name}
-        </Text>
-    )
-}
-
-function Socials() {
+function Socials({ socials }: { socials: SocialsConfig }) {
     return (
         <Group>
-            {Object.keys(SocialConfig).map(social => {
-                // @ts-ignore - will never be undefined
-                const social_config = SocialConfig[social];
+            {socials.map(social => {
                 return <SocialIcon
-                    key={social_config.name}
-                    name={social_config.name}
-                    icon={social_config.icon}
-                    url={social_config.url}
+                    key={social.name}
+                    name={social.name}
+                    icon={social.icon}
+                    url={social.url}
                 />
             })}
         </Group>

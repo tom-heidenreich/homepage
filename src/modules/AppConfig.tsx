@@ -1,94 +1,34 @@
-import { IconBrandDiscord, IconBrandGithub } from "@tabler/icons";
-import Icons from '../components/icons/Icons';
-
-export const ProfileConfig = {
-    "name": "Tom Heidenreich",
-    "avatar": "/images/avatar.png",
-    "short_bio": "I'm a *hobby developer*, mostly building web apps.\n I'm always learning and trying out *new* things.",
-    "bio": "Hi, I'm *Tom*, a hobby developer from Germany. I like to build stuff with React, Typescript, or Go. At the moment, I'm really into *machine learning*. I've started programming when I was 13, and I'm still learning new things (thanks to Fireship). Currently, I'm a student, but I want to work as a *developer* someday.",
-    "project_desc": "You can find my *projects* on Github. Usually I work on web apps, but I also experiment with other stuff like machine learning.",
-    "get_in_touch": "I'm open to small *collaborations*. \nYou can contact me via "
+export type ProjectConfig = {
+    name: string,
+    short_desc: string,
+    url: string
 }
 
-export const SocialConfig = {
-    "github": {
-        "name": "Github",
-        "url": "https://github.com/tom-heidenreich",
-        "icon": <IconBrandGithub />
-    },
-    "discord": {
-        "name": "Discord",
-        "url": "https://discord.com/users/411165035184914432",
-        "icon": <IconBrandDiscord />
-    }
+export type ProjectsConfig = ProjectConfig[]
+
+export type FeaturedProjectsConfig = ProjectConfig[]
+
+export type SocialsConfig = {
+    name: string,
+    url: string,
+    icon: string
+}[]
+
+export type ProfileConfig = {
+    name: string,
+    avatar: string,
+    short_bio: string,
+    bio: string,
+    project_desc: string,
+    get_in_touch: string
 }
 
-export const ProjectsConfig = {
-    "homepage": {
-        "name": "Homepage",
-        "short_desc": "My personal website",
-        "url": "https://github.com/tom-heidenreich/homepage"
-    },
-    "schulshop": {
-        "name": "Schulshop",
-        "short_desc": "My school project",
-        "url": "https://github.com/tom-heidenreich/schulshop"
-    },
-    "docker-remote-ui": {
-        "name": "Docker Remote UI",
-        "short_desc": "Docker Web UI",
-        "url": "https://github.com/tom-heidenreich/docker-remote-ui"
-    }
-}
+export type SkillsLanguages = {
+    name: string,
+    icon: string
+}[]
 
-export const FeaturedProjectsConfig = [
-    ProjectsConfig.homepage,
-    ProjectsConfig.schulshop,
-]
-
-export const SKillsConfig = {
-    "languages": [
-        {
-            "name": "Typescript",
-            "icon": <Icons.Typescript />
-        },
-        {
-            "name": "Javascript",
-            "icon": <Icons.Javascript />
-        },
-        {
-            "name": "Python",
-            "icon": <Icons.Python />
-        },
-        {
-            "name": "Go",
-            "icon": <Icons.Golang />
-        },
-        {
-            "name": "Java",
-            "icon": <Icons.Java />
-        }
-    ],
-    "libaries_tools": [
-        {
-            "name": "React",
-            "icon": <Icons.React />
-        },
-        {
-            "name": "Next.js",
-            "icon": <Icons.Next />
-        },
-        {
-            "name": "Docker",
-            "icon": <Icons.Docker />
-        },
-        {
-            "name": "Firebase",
-            "icon": <Icons.Firebase />
-        },
-        {
-            "name": "Tensorflow",
-            "icon": <Icons.Tensorflow />
-        }
-    ]
-}
+export type SkillsLibariesTools = {
+    name: string,
+    icon: string
+}[]

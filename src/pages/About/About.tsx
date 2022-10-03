@@ -1,19 +1,44 @@
 import { Container, Title, Text, useMantineTheme, Group, Space } from "@mantine/core";
-import { useState } from "react";
+import { getRemoteConfig, getValue } from "firebase/remote-config";
+import { useEffect, useState } from "react";
 import PrimaryTitle from "../../components/PrimaryTitle";
-import { ProfileConfig, SKillsConfig } from "../../modules/AppConfig";
+import { ProfileConfig, SkillsLanguages, SkillsLibariesTools } from "../../modules/AppConfig";
 import FormattedText from "../../modules/FormattedText";
+import IconProvider from "../../modules/IconProvider";
 
 export default function About() {
+
+    const [profileConfig, setProfileConfig] = useState<ProfileConfig | undefined>()
+    const [skillsLangConfig, setSkillsLangConfig] = useState<SkillsLanguages | undefined>()
+    const [skillsLibConfig, setSkillsLibConfig] = useState<SkillsLibariesTools | undefined>()
+
+    useEffect(() => {
+        const remoteConfig = getRemoteConfig()
+
+        const rawProfile = getValue(remoteConfig, 'profile')
+        if(!rawProfile.asString()) console.error(`Could not get value of 'profile'. Source: '${rawProfile.getSource()}'`) 
+        else setProfileConfig(JSON.parse(rawProfile.asString()) as ProfileConfig)
+
+        const rawSkillLang = getValue(remoteConfig, 'skills_languages')
+        if(!rawSkillLang.asString()) console.error(`Could not get value of 'skills_languages'. Source: '${rawSkillLang.getSource()}'`)
+        else setSkillsLangConfig(JSON.parse(rawSkillLang.asString()) as SkillsLanguages)
+
+        const rawSkillLib = getValue(remoteConfig, 'skills_lib')
+        if(!rawSkillLib.asString()) console.error(`Could not get value of 'skills_lib'. Source: '${rawSkillLib.getSource()}'`)
+        else setSkillsLibConfig(JSON.parse(rawSkillLib.asString()) as SkillsLibariesTools)
+    }, [])
+
+    if(!profileConfig || !skillsLangConfig || !skillsLibConfig) return null;
+
     return (
         <>
-            <AboutMe />
-            <Skills />
+            <AboutMe profile={profileConfig} />
+            <Skills lang={skillsLangConfig} lib={skillsLibConfig} />
         </>
     )
 }
 
-function AboutMe() {
+function AboutMe({ profile }: { profile: ProfileConfig }) {
     return (
         <>
             <PrimaryTitle>
@@ -26,13 +51,13 @@ function AboutMe() {
                 }}
                 align={'center'}
             >
-                <FormattedText string={ProfileConfig.bio} />
+                <FormattedText string={profile.bio} />
             </Text>
         </>
     )
 }
 
-function Skills() {
+function Skills({ lang, lib }: { lang: SkillsLanguages, lib: SkillsLibariesTools}) {
     return (
         <>
             <Space h='xl' />
@@ -44,15 +69,15 @@ function Skills() {
                     width: '30rem',
                 }}
             >
-                <LanguageSkills />
-                <LibariesSkills />
+                <LanguageSkills lang={lang} />
+                <LibariesSkills lib={lib} />
                 <Space h='xl' />
             </Container>
         </>
     )
 }
 
-function LanguageSkills() {
+function LanguageSkills({ lang }: { lang: SkillsLanguages }) {
     return (
         <>
             <Title
@@ -66,7 +91,7 @@ function LanguageSkills() {
                 Languages
             </Title>
             {
-                SKillsConfig.languages.map((skill, index) => {
+                lang.map((skill, index) => {
                     return <SkillWidget
                         name={skill.name}
                         icon={skill.icon}
@@ -78,7 +103,7 @@ function LanguageSkills() {
     )
 }
 
-function LibariesSkills() {
+function LibariesSkills({ lib }: { lib: SkillsLibariesTools }) {
     return (
         <>
             <Title
@@ -92,7 +117,7 @@ function LibariesSkills() {
                 Libaries and Tools
             </Title>
             {
-                SKillsConfig.libaries_tools.map((skill, index) => {
+                lib.map((skill, index) => {
                     return <SkillWidget
                         name={skill.name}
                         icon={skill.icon}
@@ -104,7 +129,7 @@ function LibariesSkills() {
     )
 }
 
-type SkillWidgetProps = { name: string, icon: JSX.Element }
+type SkillWidgetProps = { name: string, icon: string }
 function SkillWidget({ name, icon }: SkillWidgetProps) {
 
     const [hover, setHover] = useState(false);
@@ -138,7 +163,7 @@ function SkillWidget({ name, icon }: SkillWidgetProps) {
                     height: '2rem',
                 }}
             >
-                {icon}
+                <IconProvider icon={icon} />
             </div>
             <Text>
                 {name}

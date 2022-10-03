@@ -35,8 +35,9 @@ const app = initializeApp(firebaseConfig);
 getAnalytics(app);
 const remoteConfig = getRemoteConfig(app);
 
-// TODO: debug
-remoteConfig.settings.minimumFetchIntervalMillis = 3600000;
+if(process.env.NODE_ENV === 'development') {
+    remoteConfig.settings.minimumFetchIntervalMillis = 3600000;
+}
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement

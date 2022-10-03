@@ -119,41 +119,14 @@ function GetInTouch({ profile, socials }: { profile: ProfileConfig, socials: Soc
                 size='lg'
                 align="center"
             >
-                <FormattedText string={profile.get_in_touch} />{' '}
-                <DiscordLink socials={socials} />.
+                <FormattedText string={profile.get_in_touch} />
             </Text>
             <Socials socials={socials} />
         </Widget>
     )
 }
 
-function DiscordLink({ socials }: { socials: SocialsConfig }) {
-
-    const social_discord = socials[0];
-
-    function handleClick() {
-        window.location.href = social_discord.url;
-    }
-
-    return (
-        <Text
-            component="span"
-            color={'#5865F2'}
-            onClick={handleClick}
-            weight={700}
-            style={{
-                cursor: 'pointer',
-            }}
-        >
-            {social_discord.name}
-        </Text>
-    )
-}
-
 function Socials({ socials }: { socials: SocialsConfig }) {
-
-    console.log(socials);
-
     return (
         <Group>
             {socials.map(social => {
